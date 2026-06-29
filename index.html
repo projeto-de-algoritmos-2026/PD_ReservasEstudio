@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda Ótima de Reservas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="pagina">
+    <header class="cabecalho">
+      <div>
+        <p class="rotulo">Programação dinâmica</p>
+        <h1>Agenda de Reservas</h1>
+        <p class="subtitulo">
+          Demonstração do algoritmo Weighted Interval Scheduling para maximizar
+          o faturamento sem sobreposição de horários.
+        </p>
+      </div>
+    </header>
+
+    <section class="painel controles" aria-label="Controles do algoritmo">
+      <div class="botoes">
+        <button id="botaoExecutar" type="button">Executar algoritmo</button>
+        <button id="botaoLimpar" type="button" class="botao-secundario">Limpar resultado</button>
+        <button id="botaoGerarCenario" type="button" class="botao-secundario">Gerar novas reservas</button>
+        <button id="botaoExemplo" type="button" class="botao-secundario">Carregar exemplo fixo</button>
+      </div>
+      <p class="formula">
+        Fórmula central:
+        <strong>OPT[j] = max(OPT[j - 1], valor[j] + OPT[p(j)])</strong>
+      </p>
+    </section>
+
+    <section class="grade-principal">
+      <div class="painel">
+        <div class="titulo-secao">
+          <h2>Reservas</h2>
+          <p>Solicitações recebidas pelo estúdio.</p>
+        </div>
+        <div id="listaReservas" class="lista-reservas"></div>
+      </div>
+
+      <div class="painel">
+        <div class="titulo-secao">
+          <h2>Nova reserva</h2>
+          <p>Opcional: adicione uma solicitação para testar outro cenário.</p>
+        </div>
+        <form id="formularioReserva" class="formulario">
+          <label>
+            Nome
+            <input id="campoNome" type="text" placeholder="Reserva G" />
+          </label>
+          <div class="duas-colunas">
+            <label>
+              Início
+              <input id="campoInicio" type="time" />
+            </label>
+            <label>
+              Fim
+              <input id="campoFim" type="time" />
+            </label>
+          </div>
+          <label>
+            Valor pago
+            <input id="campoValor" type="number" min="1" step="1" placeholder="150" />
+          </label>
+          <p id="mensagemFormulario" class="mensagem" role="status"></p>
+          <button type="submit" class="botao-secundario">Adicionar reserva</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="painel">
+      <div class="titulo-secao">
+        <h2>Linha do tempo</h2>
+        <p>Barras proporcionais aos horários das reservas.</p>
+      </div>
+      <div id="linhaDoTempo" class="linha-do-tempo"></div>
+    </section>
+
+    <section class="painel">
+      <div class="titulo-secao">
+        <h2>Tabela do algoritmo</h2>
+        <p>Comparação entre ignorar e pegar cada reserva.</p>
+      </div>
+      <div class="tabela-container">
+        <table>
+          <thead>
+            <tr>
+              <th>j</th>
+              <th>Reserva</th>
+              <th>Início</th>
+              <th>Fim</th>
+              <th>Valor</th>
+              <th>p(j)</th>
+              <th>Valor ao ignorar</th>
+              <th>Valor ao pegar</th>
+              <th>OPT[j]</th>
+              <th>Decisão</th>
+            </tr>
+          </thead>
+          <tbody id="corpoTabelaAlgoritmo">
+            <tr>
+              <td colspan="10" class="estado-vazio">Execute o algoritmo para preencher a tabela.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grade-principal">
+      <div class="painel resultado">
+        <div class="titulo-secao">
+          <h2>Resultado final</h2>
+          <p>Melhor combinação global sem conflitos.</p>
+        </div>
+        <div id="resultadoFinal" class="estado-vazio">
+          Execute o algoritmo para ver as reservas selecionadas.
+        </div>
+      </div>
+
+      <div class="painel">
+        <div class="titulo-secao">
+          <h2>Passo a passo</h2>
+          <p>Decisões tomadas durante o preenchimento da tabela OPT.</p>
+        </div>
+        <ol id="listaPassos" class="lista-passos">
+          <li class="estado-vazio">Nenhum passo calculado ainda.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <script src="weightedIntervalScheduling.js"></script>
+  <script src="reservasDinamicas.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
