@@ -1,6 +1,6 @@
 # Algoritmo Weighted Interval Scheduling em uma agenda de reservas de estúdio
 
-- Numero da Lista: 8
+- Numero da Lista: 9
 - Conteudo da Disciplina: Programação Dinâmica
 
 LINK DO VIDEO DE APRESENTACAO: https://www.youtube.com/watch?v=HS9sPNqtyI0
