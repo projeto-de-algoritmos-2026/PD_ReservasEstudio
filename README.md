@@ -3,7 +3,7 @@
 - Numero da Lista: 8
 - Conteudo da Disciplina: Programação Dinâmica
 
-LINK DO VIDEO DE APRESENTACAO:
+LINK DO VIDEO DE APRESENTACAO: https://www.youtube.com/watch?v=HS9sPNqtyI0
 
 ## Alunos
 
